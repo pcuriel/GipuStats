@@ -1,6 +1,6 @@
 <h1> {{object.name}}</h1>
-{% for stat in stats %}
-    <p>{{stat.metros}}</p>
+{% for key, value in stats %}
+    <p>{{key}}: {{value}} </p>
    
     
 {% endfor %}
