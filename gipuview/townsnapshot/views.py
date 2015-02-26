@@ -12,5 +12,9 @@ class MunicipioDetailView(DetailView):
         context = super(MunicipioDetailView, self).get_context_data(**kwargs)
 	municipio = context['object']
 	city_stats = Stats.objects.filter(municipio=municipio.id)
-	context["stats"] = city_stats
+        stats = {}
+	for tipo in Tipo.objects.all():
+	    stats[tipo.name] = city_stats.get(tipo=tipo.id).metros
+	context["stats"] = stats
+        print context
         return context
